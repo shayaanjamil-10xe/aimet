@@ -32,3 +32,6 @@ unit_test_results
 *.swp
 packaging/setup_cfg.py
 package_info.py
+
+*.zip
+exported_models
