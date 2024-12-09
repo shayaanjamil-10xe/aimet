@@ -229,7 +229,10 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
             results_dir: str = "/tmp",
             cache_id: str = None,
             strict_validation: bool = True,
-            encoding_path: str = "") -> None:
+            encoding_path: str = "",
+            custom_forward_pass_callback=None,
+            custom_forward_pass_callback_args=None,
+            modules_to_change=None) -> None:
         '''
         :param model: Model to be quantized. Assumes model is on the correct device
         :param dummy_input: Dummy input for the model. Assumes that dummy_input is on the correct device
@@ -258,7 +261,8 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
             quant_scheme=_QuantSchemePair(quant_scheme, quant_scheme),
             rounding_mode=rounding_mode,
             config_file=config_file,
-            encoding_path=encoding_path
+            encoding_path=encoding_path,
+            modules_to_change=modules_to_change,
         )
 
         self.results_dir = results_dir
@@ -277,8 +281,13 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
                     else:
                         assert isinstance(input_data, (tuple, list))
                         model(*input_data)
-
-        self.forward_pass_callback = forward_pass_callback
+        
+        if custom_forward_pass_callback is not None:
+            self.forward_pass_callback = custom_forward_pass_callback
+            self.forward_pass_callback_args = custom_forward_pass_callback_args
+        else:
+            self.forward_pass_callback = forward_pass_callback
+            self.forward_pass_callback_args = None
 
         @functools.wraps(eval_callback)
         def eval_callback_wrapper(model: torch.nn.Module, *args, **kwargs) -> float:
@@ -475,6 +484,8 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
             default_output_bw=(output_bw or self._quantsim_params["output_bw"]),
             default_param_bw=(param_bw or self._quantsim_params["param_bw"]),
             config_file=(config_file or self._quantsim_params["config_file"]),
+            modules_to_change=self._quantsim_params["modules_to_change"],
+            in_place=True,
         )
         sim = self._get_quantsim(model, self.dummy_input, **kwargs)
 
@@ -499,15 +510,7 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
                                  encoding_path)
 
         if self._has_enabled_quantizers(sim):
-            sim.compute_encodings(self.forward_pass_callback, None)
-        # module_names = dict(model.named_modules())
-        # try:
-        #     modules_to_ignore = ['module_batch_norm_14', 'module_batch_norm_7', 'backbone.stage2.1.blocks.0.conv2.pointwise_conv.conv', 'module_batch_norm_21', 'module_batch_norm_30', 'module_batch_norm_37', 'module_batch_norm_44', 'module_batch_norm_51', 'module_batch_norm_58']
-        #     modules_to_ignore = [module_names[m] for m in modules_to_ignore]
-        # except:
-        #     modules_to_ignore = ['backbone.stage2.1.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_14', 'backbone.stage1.1.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_7', 'backbone.stage2.1.blocks.0.conv2.pointwise_conv.conv', 'backbone.stage3.1.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_21', 'backbone.stage4.2.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_30', 'neck.top_down_blocks.0.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_37', 'neck.top_down_blocks.1.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_44', 'neck.bottom_up_blocks.0.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_51', 'neck.bottom_up_blocks.1.blocks.0.conv2.depthwise_conv.bn.module_batch_norm_58']
-        #     modules_to_ignore = [module_names[m] for m in modules_to_ignore]
-        # _exclude_modules_from_quant(model, sim, modules_to_ignore)
+            sim.compute_encodings(self.forward_pass_callback, self.forward_pass_callback_args)
 
         return sim
 
@@ -696,7 +699,7 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
                 os.makedirs(output_dir, exist_ok=True)
                 sim.export(path=output_dir,
                             filename_prefix="model",
-                            dummy_input=self.dummy_input.cpu())
+                            dummy_input=utils.change_tensor_device_placement(self.dummy_input, torch.device("cpu")))
             except:
                 _logger.info("Export of model failed ------>>>>", output_dir)
             try:
@@ -704,7 +707,7 @@ class AutoQuantBase(abc.ABC): # pylint: disable=too-many-instance-attributes
                 os.makedirs(output_dir, exist_ok=True)
                 sim.export(path=output_dir,
                             filename_prefix="model",
-                            dummy_input=self.dummy_input.cpu(),
+                            dummy_input=utils.change_tensor_device_placement(self.dummy_input, torch.device("cpu")),
                             use_embedded_encodings=True,
                             export_to_torchscript=False)
             except:
@@ -1109,12 +1112,16 @@ class _EvalSession: # pylint: disable=too-many-instance-attributes
         sim = self._quantsim_factory(model, **kwargs)
         acc = self._eval_func(sim.model)
 
-        import os
-        output_dir = f"{self._results_dir}/quant_scheme_{str(self.title)}"
-        os.makedirs(output_dir, exist_ok=True)
-        sim.export(path=output_dir,
-                    filename_prefix="vit",
-                    dummy_input=self._dummy_input_on_cpu.cpu())
+        try:
+            import os
+            output_dir = f"{self._results_dir}/quant_scheme_{str(self.title)}"
+            os.makedirs(output_dir, exist_ok=True)
+            sim.export(path=output_dir,
+                        filename_prefix="model",
+                        dummy_input=utils.change_tensor_device_placement(self._dummy_input_on_cpu, torch.device("cpu")))
+        except Exception as e:
+            print("Failed to export the model with error: ", e)
+            
         return acc
 
     def __enter__(self):

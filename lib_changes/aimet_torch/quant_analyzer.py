@@ -145,7 +145,7 @@ class QuantAnalyzer:
         os.makedirs(results_dir, exist_ok=True)
 
         # # Check model sensitivity to weight and activation quantization individually.
-        self.check_model_sensitivity_to_quantization(sim)
+        self.check_model_sensitivity_to_quantization(sim, results_dir)
 
         # Perform per layer analysis by enabling each quant wrapper (OPTION-1).
         self.perform_per_layer_analysis_by_enabling_quant_wrappers(sim, results_dir)
@@ -488,7 +488,8 @@ class QuantAnalyzer:
             "W32A8": act_quantized_eval_score,
             "W8A8": quantized_eval_score
         }
-        write_json('acc_stats.json', acc_stats)
+        fp = os.path.join(results_dir, 'acc_stats.json')
+        write_json(fp, acc_stats)
 
         return fp32_eval_score, weight_quantized_eval_score, act_quantized_eval_score
 
@@ -702,10 +703,21 @@ class QuantAnalyzer:
 
         modules = utils.get_ordered_list_of_modules(self._model, self._dummy_input)
         mse_loss_dict = {}
-        for name, module in modules:
+        
+        from tqdm import tqdm
+        fp = os.path.join(results_dir, "temp_mse_per_layer.json")
+        if os.path.exists(fp):
+            with open(fp, "r") as f:
+                mse_loss_dict = json.load(f)
+                
+        for name, module in tqdm(modules):
+            if name in mse_loss_dict.keys():
+                continue
             quant_wrapper = name_to_quant_wrapper_dict[name]
             loss = self._compute_mse_loss(module, quant_wrapper, self._model, sim)
             mse_loss_dict[name] = loss
+            write_json(fp, mse_loss_dict)
+            
 
         export_per_layer_mse_plot(mse_loss_dict,
                                   results_dir,

@@ -35,3 +35,4 @@ package_info.py
 
 *.zip
 exported_models
+*.tar

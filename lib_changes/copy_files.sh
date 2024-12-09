@@ -7,6 +7,7 @@ cp model_preparer.py /usr/local/lib/python3.10/dist-packages/aimet_torch/
 cp qc_quantize_op.py /usr/local/lib/python3.10/dist-packages/aimet_torch/
 cp quant_analyzer.py /usr/local/lib/python3.10/dist-packages/aimet_torch/
 cp quantsim.py /usr/local/lib/python3.10/dist-packages/aimet_torch/
+cp builder.py /usr/local/lib/python3.10/dist-packages/aimet_torch/quantsim_config/
 
 echo "Aimet files copied"
 
