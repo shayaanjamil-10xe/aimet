@@ -53,7 +53,7 @@ dataset = {
 }
 
 evaluation = {
-    "batch_size"        :       32,
+    "batch_size"        :       1,
     "num_workers"       :       1
 }
 

@@ -1,0 +1,876 @@
+{
+    "conv1": {
+        "inputs": {
+            "0": {
+                "min": -2.033729076385498,
+                "max": 2.2170979976654053,
+                "delta": 0.01666991040110588,
+                "offset": -122.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        },
+        "params": {
+            "weight": {
+                "min": -0.38616201281547546,
+                "max": 0.38314512372016907,
+                "delta": 0.003016890725120902,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 2.5746376514434814,
+                "delta": 0.010096617974340916,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "maxpool": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 3.457709789276123,
+                "delta": 0.013559645973145962,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer1.0.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.3521108031272888,
+                "max": 0.349359929561615,
+                "delta": 0.002750865649431944,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer1.0.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.2016583681106567,
+                "delta": 0.004712385591119528,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer1.0.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.7404118776321411,
+                "max": 0.7346274256706238,
+                "delta": 0.0057844677940011024,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -2.600527763366699,
+                "max": 2.136147975921631,
+                "delta": 0.01857519894838333,
+                "offset": -140.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer1.0.module_add": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer1.0.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 3.4948439598083496,
+                "delta": 0.013705270364880562,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer1.1.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.2631849944591522,
+                "max": 0.26112887263298035,
+                "delta": 0.0020561327692121267,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer1.1.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.7821862697601318,
+                "delta": 0.006988965906202793,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer1.1.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -1.0165133476257324,
+                "max": 1.0085718631744385,
+                "delta": 0.007941510528326035,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -3.6522130966186523,
+                "max": 2.8604745864868164,
+                "delta": 0.025539951398968697,
+                "offset": -143.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer1.1.module_add_1": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer1.1.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 4.924117565155029,
+                "delta": 0.01931026577949524,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.0.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.1915498822927475,
+                "max": 0.19005340337753296,
+                "delta": 0.0014964834554120898,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer2.0.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.7220467329025269,
+                "delta": 0.006753124296665192,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.0.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.6376640796661377,
+                "max": 0.6326823234558105,
+                "delta": 0.004981750622391701,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -2.2121474742889404,
+                "max": 2.736077070236206,
+                "delta": 0.019404802471399307,
+                "offset": -114.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.0.downsample.0": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.6924943923950195,
+                "max": 0.6870842576026917,
+                "delta": 0.00541011244058609,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -1.597548246383667,
+                "max": 1.610127329826355,
+                "delta": 0.012579119764268398,
+                "offset": -127.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.0.module_add_2": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer2.0.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 2.8545143604278564,
+                "delta": 0.01119417417794466,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.1.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.2924874424934387,
+                "max": 0.29020237922668457,
+                "delta": 0.00228505814447999,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer2.1.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.8164931535720825,
+                "delta": 0.007123502437025309,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.1.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.7459595799446106,
+                "max": 0.7401317954063416,
+                "delta": 0.00582780921831727,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -2.4864442348480225,
+                "max": 2.141608953475952,
+                "delta": 0.018149228766560555,
+                "offset": -137.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer2.1.module_add_3": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer2.1.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 4.608679294586182,
+                "delta": 0.018073251470923424,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.0.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.20987501740455627,
+                "max": 0.20823536813259125,
+                "delta": 0.001639648573473096,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer3.0.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.743525743484497,
+                "delta": 0.006837355904281139,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.0.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.355499804019928,
+                "max": 0.3527224659919739,
+                "delta": 0.0027773422189056873,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -1.5575274229049683,
+                "max": 2.0531044006347656,
+                "delta": 0.014159340411424637,
+                "offset": -110.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.0.downsample.0": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.36749696731567383,
+                "max": 0.3646259009838104,
+                "delta": 0.0028710700571537018,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -1.2239652872085571,
+                "max": 0.622846245765686,
+                "delta": 0.0072423978708684444,
+                "offset": -169.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.0.module_add_4": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer3.0.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 2.0927393436431885,
+                "delta": 0.008206821046769619,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.1.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.20980729162693024,
+                "max": 0.2081681787967682,
+                "delta": 0.0016391194658353925,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer3.1.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.169244408607483,
+                "delta": 0.004585272166877985,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.1.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.5920632481575012,
+                "max": 0.5874377489089966,
+                "delta": 0.004625494126230478,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -2.976773262023926,
+                "max": 1.488386631011963,
+                "delta": 0.0175104308873415,
+                "offset": -170.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer3.1.module_add_5": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer3.1.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 2.5321526527404785,
+                "delta": 0.009930009953677654,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.0.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.16907216608524323,
+                "max": 0.167751282453537,
+                "delta": 0.0013208762975409627,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer4.0.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.4288424253463745,
+                "delta": 0.005603303667157888,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.0.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.6867971420288086,
+                "max": 0.6814315319061279,
+                "delta": 0.005365602672100067,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -2.2945101261138916,
+                "max": 3.386073350906372,
+                "delta": 0.022276798263192177,
+                "offset": -103.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.0.downsample.0": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.9186490774154663,
+                "max": 0.9114721417427063,
+                "delta": 0.0071769459173083305,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -1.4001190662384033,
+                "max": 1.3462682962417603,
+                "delta": 0.010770146735012531,
+                "offset": -130.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.0.module_add_6": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer4.0.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 4.35561466217041,
+                "delta": 0.017080841585993767,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.1.conv1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.1672900915145874,
+                "max": 0.1659831404685974,
+                "delta": 0.001306953839957714,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer4.1.relu": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 1.1886320114135742,
+                "delta": 0.0046613020822405815,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.1.conv2": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -2.7016637325286865,
+                "max": 2.6805570125579834,
+                "delta": 0.021106747910380363,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -9.230264663696289,
+                "max": 12.767094612121582,
+                "delta": 0.08626415580511093,
+                "offset": -107.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "layer4.1.module_add_7": {
+        "inputs": {
+            "0": {},
+            "1": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {}
+        }
+    },
+    "layer4.1.module_relu_1": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 15.030707359313965,
+                "delta": 0.05894394963979721,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "avgpool": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {},
+        "outputs": {
+            "0": {
+                "min": 0.0,
+                "max": 5.554811000823975,
+                "delta": 0.02178357169032097,
+                "offset": 0.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    },
+    "fc": {
+        "inputs": {
+            "0": {}
+        },
+        "params": {
+            "weight": {
+                "min": -0.7232550978660583,
+                "max": 0.7176046967506409,
+                "delta": 0.005650430452078581,
+                "offset": -128.0,
+                "enabled": true,
+                "symmetric": true
+            },
+            "bias": {}
+        },
+        "outputs": {
+            "0": {
+                "min": -6.185011386871338,
+                "max": 11.943470001220703,
+                "delta": 0.07109208405017853,
+                "offset": -87.0,
+                "enabled": true,
+                "symmetric": false
+            }
+        }
+    }
+}

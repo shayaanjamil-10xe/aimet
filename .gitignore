@@ -8,7 +8,8 @@ TrainingExtensions/torch/test/data/
 NightlyTests/torch/data/
 NightlyTests/tensorflow/data/
 NightlyTests/data/
-
+Examples/Examples/torch/quantization/full_ds/
+Examples/Examples/torch/quantization/val/
 # Ignore the AIMET support directories
 CD
 Benchmarks
@@ -36,3 +37,9 @@ package_info.py
 *.zip
 exported_models
 *.tar
+*.tar.gz
+quant_analyzer/*
+quantsim_report/*
+temp/*
+*.jpeg
+Examples/torch/quantization/full_ds/

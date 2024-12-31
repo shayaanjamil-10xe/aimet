@@ -75,7 +75,7 @@ def make_dataset(directory: str, class_to_idx: dict, extensions: tuple, num_samp
             images.extend(class_images)
             num_classes += 1
 
-    logger.info("Dataset consists of %d images in %d classes", len(images), num_classes)
+    # logger.info("Dataset consists of %d images in %d classes", len(images), num_classes)
     return images
 
 
@@ -157,7 +157,7 @@ class ImageFolder(Dataset):
         if self.target_transform is not None:
             target = self.target_transform(target)
 
-        return sample, target
+        return path, sample, target
 
     def __len__(self):
         return len(self.samples)
@@ -184,7 +184,7 @@ class ImageNetDataLoader:
         normalize = transforms.Normalize(mean=image_net_config.dataset['images_mean'],
                                          std=image_net_config.dataset['images_std'])
 
-        self.train_transforms = transforms.Compose([
+        self.train_transforms = transforms.Compose([    
             transforms.RandomResizedCrop(image_size),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),

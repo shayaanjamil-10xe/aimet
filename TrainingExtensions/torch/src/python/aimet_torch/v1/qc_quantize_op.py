@@ -815,10 +815,12 @@ class StaticGridQuantWrapper(QcQuantizeWrapper):
         for quantizer in self.input_quantizers:
             quantizer.compute_encoding()
 
+        print("PARAM COMPUTE ENCODING")
         for quantizer in self.param_quantizers.values():
             # NOTE: If quantizer.enabled is True but quantizer.encoding is None,
             # quantizer.compute_encoding() will set quantizer.enabled to False.
             # Otherwise, quantizer.compute_encodings() is equivalent to no-op.
+            print(quantizer)
             quantizer.compute_encoding()
 
         for quantizer in self.output_quantizers:

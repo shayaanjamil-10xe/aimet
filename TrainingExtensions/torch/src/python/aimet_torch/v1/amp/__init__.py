@@ -1,7 +1,8 @@
-#==============================================================================
+# -*- mode: python -*-
+# =============================================================================
 #  @@-COPYRIGHT-START-@@
 #
-#  Copyright (c) 2018, Qualcomm Innovation Center, Inc. All rights reserved.
+#  Copyright (c) 2024, Qualcomm Innovation Center, Inc. All rights reserved.
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions are met:
@@ -32,43 +33,4 @@
 #  SPDX-License-Identifier: BSD-3-Clause
 #
 #  @@-COPYRIGHT-END-@@
-#==============================================================================
-
-add_custom_target(copy_examples
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_BINARY_DIR}/Docs_SOURCE/Examples)
-
-add_custom_target(copy_examples_beta_docs
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_BINARY_DIR}/Docs_SOURCE/beta/examples)
-
-#TODO Remove the OPTIONAL flag after Common Examples code gets added
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/common
-    DESTINATION Examples
-    OPTIONAL
-    PATTERN "__pycache*" EXCLUDE
-    PATTERN "CMakeLists.txt" EXCLUDE
-    )
-
-if (ENABLE_TORCH)
-    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/torch
-    DESTINATION Examples
-    PATTERN "__pycache*" EXCLUDE
-    PATTERN "CMakeLists.txt" EXCLUDE
-    )
-
-endif(ENABLE_TORCH)
-
-if (ENABLE_TENSORFLOW)
-    #TODO Remove the OPTIONAL flag after TensorFlow Examples code gets added
-    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tensorflow
-    DESTINATION Examples
-    OPTIONAL
-    PATTERN "__pycache*" EXCLUDE
-    PATTERN "CMakeLists.txt" EXCLUDE
-    )
-
-endif(ENABLE_TENSORFLOW)
-
-# Create a tarball archive of the Examples code
-install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E tar cvzf ${CMAKE_INSTALL_PREFIX}/Examples.tar.gz .
-                              WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})"
-        )
+# =============================================================================
