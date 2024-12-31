@@ -105,21 +105,22 @@ class ImageNetEvaluator:
         model = model.eval()
 
         with torch.no_grad():
-            for i, (_, input_data, target_data) in tqdm(enumerate(self._val_data_loader), total=iterations):
+            for i, (path, input_data, target_data) in tqdm(enumerate(self._val_data_loader), total=iterations):
                 if i == iterations:
                     break
-
+                print(path)
                 inputs_batch = input_data.to(device)
                 target_batch = target_data.to(device)
 
                 predicted_batch = model(inputs_batch)
-                print(predicted_batch, target_batch)
+                # print(predicted_batch, target_batch)
 
                 batch_avg_top_1_5 = accuracy(output=predicted_batch, target=target_batch,
                                              topk=(1, 5))
 
                 acc_top1 += batch_avg_top_1_5[0].item()
                 acc_top5 += batch_avg_top_1_5[1].item()
+                break
 
         acc_top1 /= iterations
         acc_top5 /= iterations
