@@ -108,7 +108,6 @@ class ImageNetEvaluator:
             for i, (path, input_data, target_data) in tqdm(enumerate(self._val_data_loader), total=iterations):
                 if i == iterations:
                     break
-                print(path)
                 inputs_batch = input_data.to(device)
                 target_batch = target_data.to(device)
 
@@ -120,7 +119,7 @@ class ImageNetEvaluator:
 
                 acc_top1 += batch_avg_top_1_5[0].item()
                 acc_top5 += batch_avg_top_1_5[1].item()
-                break
+                # break
 
         acc_top1 /= iterations
         acc_top5 /= iterations
