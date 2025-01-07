@@ -43,3 +43,4 @@ quantsim_report/*
 temp/*
 *.jpeg
 Examples/torch/quantization/full_ds/
+output/
